@@ -161,19 +161,19 @@ textarea {
 }
 
 #sec_5 ::-webkit-input-placeholder {
-  color: #818181;
+  color: white;
 }
 
 #sec_5 ::-moz-placeholder {
-  color: #818181;
+  color: white;
 }
 
 #sec_5 :-moz-placeholder {
-  color: #818181;
+  color: white;
 }
 
 #sec_5 :-ms-input-placeholder {
-  color: #818181;
+  color: white;
 }
 
 .min_wrapper {
@@ -1205,9 +1205,10 @@ header .arrow {
   right: 0;
   bottom: 0;
   z-index: 9999;
+  color: white;
 }
 #sec_5 .cb_form_wrapper h2 {
-  background-color: #00527c;
+  background-color: #13537a;
   height: 98px;
   color: white;
   font-family: Circe;
@@ -1220,7 +1221,6 @@ header .arrow {
 }
 #sec_5 .cb_form_wrapper p {
   display: inline-block;
-  color: #303030;
   font-family: Acrom;
   font-weight: 300;
   /* Light */
@@ -1229,21 +1229,19 @@ header .arrow {
   margin: 0 -5px 0 0;
   text-align: center;
   line-height: 96px;
+  background-color: #4a8ba5;
 }
 #sec_5 .cb_form_wrapper p.tel {
   width: 208px;
-  background-color: white;
 }
 #sec_5 .cb_form_wrapper p.email {
   width: 182px;
-  background-color: #e8ebeb;
 }
 #sec_5 .cb_form_wrapper p.address {
   width: 390px;
-  background-color: #dee1e1;
 }
 #sec_5 .cb_form_wrapper .cb_form {
-  background-color: #dfdfdf;
+  background-color: #13537a;
   height: 202px;
   overflow: hidden;
 }
@@ -1255,9 +1253,9 @@ header .arrow {
   font-weight: 300;
   /* Light */
   font-size: 20px;
-  color: #818181;
-  border-bottom: 1px solid #818181;
+  border-bottom: 1px solid white;
   text-align: center;
+  color: white;
 }
 #sec_5 .cb_form_wrapper .cb_form #cb_phone {
   float: left;
@@ -1279,29 +1277,41 @@ header .arrow {
   font-weight: 300;
   /* Light */
   font-size: 20px;
-  color: #818181;
+  color: black;
   outline: none;
+}
+#sec_5 .cb_form_wrapper .cb_form #cb_message::-webkit-input-placeholder {
+  color: black;
+}
+#sec_5 .cb_form_wrapper .cb_form #cb_message::-moz-placeholder {
+  color: black;
+}
+#sec_5 .cb_form_wrapper .cb_form #cb_message:-moz-placeholder {
+  color: black;
+}
+#sec_5 .cb_form_wrapper .cb_form #cb_message:-ms-input-placeholder {
+  color: black;
 }
 #sec_5 .cb_form_wrapper .cb_form #cb_submit {
   display: block;
   width: 120px;
   margin: 15px auto;
-  border: 2px solid rgba(129, 129, 129, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 4px;
   font-family: Circe;
   font-weight: 300;
   /* Light */
   font-size: 20px;
-  color: #818181;
   padding: 0 10px;
   cursor: pointer;
+  color: white;
 }
 #sec_5 .cb_form_wrapper .arrow_down {
   width: 0;
   height: 0;
   border-left: 36px solid transparent;
   border-right: 36px solid transparent;
-  border-top: 36px solid #dfdfdf;
+  border-top: 36px solid #13537a;
   margin: 0 auto;
 }
 #sec_5 .copyright {
