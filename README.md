@@ -1,1 +1,1 @@
-Landing for DEVOS Group, Mobile and Web Applications.
+Landing for DEVOS Group, Mobile and Web Applications!
