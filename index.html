@@ -557,6 +557,8 @@
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script type="text/javascript">
 	function initialize() {
+		$('#cb_form_wrapper').show();
+		
         var mapCanvas = document.getElementById('map');
         var ourOffice = new google.maps.LatLng(55.75785669, 37.58140683);
         var mapOptions = {
@@ -713,18 +715,18 @@
         var map = new google.maps.Map(mapCanvas, mapOptions);
 		map.setOptions({styles: styles});
 
-        function map_recenter(latlng,offsetx,offsety) {
+        function getOffsetCenter(latlng,offsetx,offsety) {
 		    var point1 = map.getProjection().fromLatLngToPoint(
 		        (latlng instanceof google.maps.LatLng) ? latlng : map.getCenter()
 		    );
 		    var point2 = new google.maps.Point(
 		        ( (typeof(offsetx) == 'number' ? offsetx : 0) / Math.pow(2, map.getZoom()) ) || 0,
 		        ( (typeof(offsety) == 'number' ? offsety : 0) / Math.pow(2, map.getZoom()) ) || 0
-		    );  
-		    map.setCenter(map.getProjection().fromPointToLatLng(new google.maps.Point(
+		    );
+		    return map.getProjection().fromPointToLatLng(new google.maps.Point(
 		        point1.x - point2.x,
 		        point1.y + point2.y
-		    )));
+		    ));
 		}
 		function latLngToPoint(latLng) {
 		 	var topRight = map.getProjection().fromLatLngToPoint(map.getBounds().getNorthEast());
@@ -735,28 +737,32 @@
 		}
         
         google.maps.event.addListenerOnce(map,"projection_changed", function() {
-			var op = latLngToPoint(ourOffice);
+        	var op = latLngToPoint(ourOffice);
 			var arrowBottom = $('.arrow_down').offset().top + $('.arrow_down').outerHeight();
-			map_recenter(ourOffice, 0, op.y - arrowBottom - 10);
+			var newCenter = getOffsetCenter(ourOffice, 0, op.y - arrowBottom - 10);
+			map.setCenter(newCenter);
 		});
-		map.addListener('dragend', function() {
-		    $('#cb_form_wrapper').hide();
-		});
-		var image = {
-		    url: 'images/pin.svg',
-		    // This marker is 20 pixels wide by 32 pixels high.
-		    size: new google.maps.Size(20, 32),
-		    // The origin for this image is (0, 0).
-		    origin: new google.maps.Point(0, 0),
-		    // The anchor for this image is the base of the flagpole at (0, 32).
-		    anchor: new google.maps.Point(0, 32)
-		  };
-		var image = 'images/pin.svg';
+		var image = 'images/pin.png';
 		var marker = new google.maps.Marker({
 		    position: ourOffice,
 		    icon: image
 		});
-		marker.setMap(map);
+		marker.addListener('click', function() {
+			map.panTo(getOffsetCenter(ourOffice, 0, -250));
+		    map.setZoom(17);
+		    $('#cb_form_wrapper').fadeIn();
+		    marker.setMap(null);
+		});
+		
+		map.addListener('dragend', function() {
+		    $('#cb_form_wrapper').fadeOut();
+		    marker.setMap(map);
+		});
+		map.addListener('zoom_changed', function() {
+		    $('#cb_form_wrapper').fadeOut();
+		    marker.setMap(map);
+		});
+		
     }
 </script>
 <script type="text/javascript">
