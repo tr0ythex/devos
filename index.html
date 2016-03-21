@@ -150,7 +150,7 @@
 								<h2>Свежесть 365</h2>
 								<p>Лэндинг для компании "Свежесть 365", занимающейся производством и оптовой продажей свежей зелени.
 								Теперь компания выделяется среди конкурентов: яркий дизайн и удобная система заказов делают свое дело.</p>
-								<p>https://unsplash.com</p>
+								<p>http://freshmarke365.ru</p>
 							</div>
 						</div>
 					</div>
@@ -748,8 +748,11 @@
 		    icon: image
 		});
 		marker.addListener('click', function() {
-			map.panTo(getOffsetCenter(ourOffice, 0, -250));
 		    map.setZoom(17);
+		    var listener = google.maps.event.addListener(map, "idle", function() { 
+		      map.panTo(getOffsetCenter(ourOffice, 0, -250));
+			  google.maps.event.removeListener(listener);
+			});
 		    $('#cb_form_wrapper').fadeIn();
 		    marker.setMap(null);
 		});
