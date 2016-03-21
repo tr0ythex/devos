@@ -506,6 +506,10 @@ header .arrow {
 #sec_3 .form_wrapper .prj_desc .app_store_download {
   margin-top: 30px;
 }
+#sec_3 .form_wrapper .prj_desc a {
+  text-decoration: none;
+  color: white;
+}
 #sec_3 .pf_form {
   width: 620px;
   margin: 0 auto;
